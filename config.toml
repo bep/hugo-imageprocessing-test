@@ -1,0 +1,6 @@
+disableKinds = ["page", "section", "term", "taxonomy"]
+
+[caches]
+    [caches.images]
+        dir    = ':cacheDir/:project'
+        maxAge = "10s"

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 10px;
+        padding: 0;
+        background-color: black;
+        color: white;
+      }
+      .grid {
+        width: 100%;
+        display: grid;
+        grid-gap: 0;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+    </style>
+  </head>
+  <body class="grid">
+    {{ template "img" (dict "img" ((resources.Get "giphy.gif").Resize "100x") "what" "Resize 100x animated GIF") }}
+    {{ template "img" (dict "img" ((resources.Get "giphy.gif").Resize "100x jpg") "what" "Resize 100x animated GIF to JPG") }}
+    {{ template "img" (dict "img" ((resources.Get "gohugoio.png").Resize "100x jpg") "what" "Resize 100x PNG to JPG") }}
+    {{ template "img" (dict "img" ((resources.Get "gohugoio-card.gif").Resize "200x jpg") "what" "Resize 200x GIF to JPG") }}
+    {{ template "img" (dict "img" ((resources.Get "gohugoio-card.gif").Resize "200x jpg") "what" "Resize 200x GIF to JPG") }}
+
+</html>
+
+{{ define "img" }}
+  <figure>
+    <img src="{{ .img.RelPermalink }}" alt="{{ .img.MediaType }}" />
+    <figcaption>{{ .what }}</figcaption>
+  </figure>
+{{ end }}
